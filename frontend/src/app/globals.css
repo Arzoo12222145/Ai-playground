@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f6f8fa;
+  color: #222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #0051a3;
+}
+
+button {
+  background: linear-gradient(90deg, #6ee7b7 0%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(60, 120, 200, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+button:hover {
+  background: linear-gradient(90deg, #3b82f6 0%, #6ee7b7 100%);
+  box-shadow: 0 4px 16px rgba(60, 120, 200, 0.12);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  border: 1px solid #e0e7ef;
+  border-radius: 8px;
+  padding: 0.6em 1em;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+  width: 100%;
+  background: #fff;
+  transition: border 0.2s;
+}
+input:focus {
+  border: 1.5px solid #3b82f6;
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f6f8fa;
+  }
+::-webkit-scrollbar-thumb {
+  background: #e0e7ef;
+  border-radius: 8px;
+}
+
+.nextjs-portal, [data-nextjs-dialog], [id^="__next"] > div[style*="fixed"][style*="bottom"], [class*="vercel"] {
+  display: none !important;
+}
+
+[data-nextjs-dev-tools-button], [aria-label="Open Next.js Dev Tools"], button[aria-label="Open Next.js Dev Tools"], div[style*="fixed" i] > button[aria-label="Open Next.js Dev Tools"] {
+  display: none !important;
+}
