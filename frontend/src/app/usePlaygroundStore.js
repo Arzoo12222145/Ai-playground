@@ -21,17 +21,18 @@ export const usePlaygroundStore = create((set, get) => ({
     const { sessionId, chat, code, css } = get();
     const token = localStorage.getItem('token');
     if (!token) return;
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     // Only save if there is at least one user message or code/css
     const hasContent = (Array.isArray(chat) && chat.some(m => m.role === 'user' && m.content && m.content.trim())) || (code && code.trim()) || (css && css.trim());
     if (!hasContent) return;
     try {
       if (sessionId) {
-        await axios.put(`http://localhost:5000/api/session/${sessionId}`,
+        await axios.put(`${apiUrl}/api/session/${sessionId}`,
           { chatHistory: chat, code, css },
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
-        const res = await axios.post('http://localhost:5000/api/session',
+        const res = await axios.post(`${apiUrl}/api/session`,
           { chatHistory: chat, code, css },
           { headers: { Authorization: `Bearer ${token}` } }
         );
