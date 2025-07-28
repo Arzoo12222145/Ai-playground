@@ -13,7 +13,8 @@ export default function SignupPage() {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/signup', { email, password });
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await axios.post(`${apiUrl}/api/auth/signup`, { email, password });
       localStorage.setItem('token', res.data.token);
       router.push('/playground');
     } catch (err) {

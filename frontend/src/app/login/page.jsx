@@ -8,12 +8,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
       localStorage.setItem('token', res.data.token);
       router.push('/playground');
     } catch (err) {

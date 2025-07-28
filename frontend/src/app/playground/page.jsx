@@ -169,7 +169,8 @@ export default function PlaygroundPage() {
     setError('');
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:5000/api/ai/generate', { prompt }, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await axios.post(`${apiUrl}/api/ai/generate`, { prompt }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAiResponse(res.data);
@@ -239,8 +240,9 @@ export default function PlaygroundPage() {
     setError('');
     try {
       const token = localStorage.getItem('token');
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       // Send the current JSX, CSS, and override prompt to the backend
-      const res = await axios.post('http://localhost:5000/api/ai/generate', {
+      const res = await axios.post(`${apiUrl}/api/ai/generate`, {
         prompt: `For the following JSX and CSS, only modify the first <${selectedElementInfo?.tag?.toLowerCase()}> element as per this instruction: ${overridePrompt}. Return ONLY the updated JSX and CSS as a JSON object with 'jsx' and 'css'. Do not change any other part of the code.`,
         jsx: code,
         css: css,
